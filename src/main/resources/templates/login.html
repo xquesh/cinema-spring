@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Logowanie</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}"/>
+</head>
+
+<body>
+
+<div th:replace="index :: nav"></div>
+
+<form class="box" th:action="@{/login}" method="post">
+    <h1 align="center">Logowanie: </h1>
+
+    <p align="center">
+    <input type="text" name="username" placeholder="Login"> <br>
+    <input type="password" name="password" placeholder="Hasło" id="hide"><br>
+    <input type="submit" value="Zaloguj">
+    </p>
+
+    <br><br><br>
+    <p align="center">
+    <div align="center" th:if="${param.error}">
+        <div class="alert alert-danger"><span style="color: white">Nieprawidłowy login lub hasło.</span></div>
+    </div>
+
+    <div align="center" th:if="${param.logout}">
+        <div class="alert alert-info"><span style="color: white">Udało się wylogować pomyślnie.</span></div>
+    </div>
+    </p>
+
+</form>
+
+</body>
+</html>
